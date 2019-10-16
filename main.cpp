@@ -1,12 +1,17 @@
+/*
+    main.cpp
+    Entry point.
+*/
+// Include Headers
 #include <QApplication>
-#include <QWidget>
-#include <QLabel>
 #include "MainWindow.h"
+
 int main(int argc, char** argv) {
-    QApplication a(argc, argv);
+    // Construct the app.
+    QApplication app(argc, argv);
+    // Construct main window and show it.
     MainWindow* win = new MainWindow(NULL, 800, 600);
-
     win->show();
-
-    return a.exec();
+    // App loop
+    return app.exec();
 }

@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QLabel>
 #include <QTextEdit>
+#include <QTreeWidget>
+#include "InfoMemoryListDisplay.h"
 
 class MainWindow: public QWidget {
 private:
@@ -13,6 +15,8 @@ private:
     QTextEdit* textbox1;
     QTextEdit* textbox2;
     QTextEdit* textbox3;
+    QTreeWidget* memlist;
+    QTreeWidget* reglist;
 public:
     MainWindow(QWidget *parent, int width, int height);
     void initWindow(int width, int height);
