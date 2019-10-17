@@ -23,6 +23,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 # Input
 SOURCES += main.cpp \
-    src/MainWindow.cpp
+    src/CyMainWindow.cpp \
+    src/CyInfoMemoryLayout.cpp \
+    src/CyTextEditor.cpp \
+    src/CyUtils.cpp
 
-HEADERS += headers/MainWindow.h
+HEADERS += headers/CyMainWindow.h \
+    headers/CyInfoMemoryLayout.h \
+    headers/CyTextEditor.h \
+    headers/CyUtils.h

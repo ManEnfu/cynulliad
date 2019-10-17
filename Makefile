@@ -51,9 +51,15 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = main.cpp \
-		src/MainWindow.cpp 
+		src/CyMainWindow.cpp \
+		src/CyInfoMemoryLayout.cpp \
+		src/CyTextEditor.cpp \
+		src/CyUtils.cpp 
 OBJECTS       = main.o \
-		MainWindow.o
+		CyMainWindow.o \
+		CyInfoMemoryLayout.o \
+		CyTextEditor.o \
+		CyUtils.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -127,8 +133,14 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		cynulliad.pro headers/MainWindow.h main.cpp \
-		src/MainWindow.cpp
+		cynulliad.pro headers/CyMainWindow.h \
+		headers/CyInfoMemoryLayout.h \
+		headers/CyTextEditor.h \
+		headers/CyUtils.h main.cpp \
+		src/CyMainWindow.cpp \
+		src/CyInfoMemoryLayout.cpp \
+		src/CyTextEditor.cpp \
+		src/CyUtils.cpp
 QMAKE_TARGET  = cynulliad
 DESTDIR       = 
 TARGET        = cynulliad
@@ -310,8 +322,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents headers/MainWindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp src/MainWindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents headers/CyMainWindow.h headers/CyInfoMemoryLayout.h headers/CyTextEditor.h headers/CyUtils.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp src/CyMainWindow.cpp src/CyInfoMemoryLayout.cpp src/CyTextEditor.cpp src/CyUtils.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -359,11 +371,21 @@ compiler_clean: compiler_moc_predefs_clean
 
 ####### Compile
 
-main.o: main.cpp headers/MainWindow.h
+main.o: main.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
-MainWindow.o: src/MainWindow.cpp headers/MainWindow.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MainWindow.o src/MainWindow.cpp
+CyMainWindow.o: src/CyMainWindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o CyMainWindow.o src/CyMainWindow.cpp
+
+CyInfoMemoryLayout.o: src/CyInfoMemoryLayout.cpp headers/CyInfoMemoryLayout.h \
+		headers/CyUtils.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o CyInfoMemoryLayout.o src/CyInfoMemoryLayout.cpp
+
+CyTextEditor.o: src/CyTextEditor.cpp headers/CyTextEditor.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o CyTextEditor.o src/CyTextEditor.cpp
+
+CyUtils.o: src/CyUtils.cpp headers/CyUtils.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o CyUtils.o src/CyUtils.cpp
 
 ####### Install
 

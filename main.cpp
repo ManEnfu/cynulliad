@@ -4,13 +4,13 @@
 */
 // Include Headers
 #include <QApplication>
-#include "MainWindow.h"
+#include "CyMainWindow.h"
 
 int main(int argc, char** argv) {
     // Construct the app.
     QApplication app(argc, argv);
     // Construct main window and show it.
-    MainWindow* win = new MainWindow(NULL, 800, 600);
+    CyMainWindow* win = new CyMainWindow(NULL, 800, 600);
     win->show();
     // App loop
     return app.exec();
