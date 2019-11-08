@@ -4,11 +4,13 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QTextEdit>
+#include <QPushButton>
 
 class CyTextEditor: public QVBoxLayout {
 private:
     QLabel* title;
     QTextEdit* text;
+    QPushButton* runbutton;
 public:
     CyTextEditor(QWidget *parent);
     void init();
